@@ -36,21 +36,9 @@ export default class starter extends Component {
     }
 
     goToIndexPage() {
-        this.setInterval(
-            ()=> wx.redirectTo({
-                url: 'index',
-                success: function(res){
-                    console.log(res," Success!");
-                },
-                fail: function() {
-                    // fail
-                    console.log("Failed!");
-                },
-                complete: function() {
-                    // complete
-                }
-            })
-        )
+        Taro.navigateTo({
+            url:'/pages/index/index'
+        })
     }
 
     render () {
