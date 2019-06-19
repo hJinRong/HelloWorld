@@ -1,0 +1,17 @@
+@import "~taro-ui/dist/style/components/drawer.scss";
+@import "~taro-ui/dist/style/components/list.scss";
+
+.userInfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.usersIcon {
+    justify-self: right;
+    align-self: center;
+    flex-flow: 1;
+    margin-left: 100px;
+}
