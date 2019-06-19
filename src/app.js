@@ -13,6 +13,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/starter/starter',
       'pages/index/index'
     ],
     window: {
