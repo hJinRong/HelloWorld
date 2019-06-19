@@ -5,15 +5,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: left;
+    justify-items: center;
     box-sizing: border-box;
     margin-bottom: 50px;
 }
+.usersName {
+    padding-left: 2em;
+    flex-grow: 4;
+    box-sizing: border-box;
+    border: 1px red solid;
+}
 .usersIcon {
-    justify-self: right;
-    align-self: center;
-    flex-flow: 1;
-    margin-left: 100px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: 1px green solid;
 }
 .drawer-item {
     box-sizing: border-box;

@@ -23,7 +23,7 @@ export default class Index extends Component {
   componentWillMount() {
     Taro.getSetting({
       success: res => {
-        if(res.authSetting['scope.userInfo']) {
+        if (res.authSetting['scope.userInfo']) {
           Taro.getUserInfo({
             success: resu => {
               let userInfo = resu.userInfo
@@ -33,7 +33,7 @@ export default class Index extends Component {
                 province: userInfo.province,
                 city: userInfo.city
               })
-              if(this.userInfoReadyCallback) {
+              if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(resu)
               }
             }
@@ -54,41 +54,53 @@ export default class Index extends Component {
   handleClick(value) {
     this.setState({
       current: value
-    },()=>{
+    }, () => {
       console.log(this.state.current);
     })
   }
 
   openTheDrawer() {
-    this.setState({
-      show: true
-    })
+    if (this.state.show != true) {
+      this.setState({
+        show: true
+      },() => {
+        console.log(this.state.show)
+      })
+    }
+  }
+
+  closeTheDrawer() {
+    if(this.state.show == true) {
+      this.setState({
+        show: false
+      })
+    }
   }
 
   render() {
     return (
       <View className='index'>
-        <AtDrawer show={this.state.show} mask width='230px' right='true'>
+        <AtDrawer show={this.state.show} mask width='230px' right='true' onClose={this.closeTheDrawer.bind(this)}>
           <View className='drawer-item'><Text>备忘</Text><AtIcon size='30' color='#363636' value='bell'></AtIcon></View>
           <View className='drawer-item'><Text>Star for me</Text><AtIcon size='30' color='#363636' value='star-2'></AtIcon></View>
           <View className='drawer-item'><Text>About us</Text><AtIcon size='30' color='#363636' value='help'></AtIcon></View>
           <View className='drawer-item'><Text>Exit</Text><AtIcon size='30' color='#363636' value='allow-left'></AtIcon></View>
         </AtDrawer>
-        <View className='userInfoContainer'>
-          <View className='usersName'><Text>Welcome! {this.state.nickName} </Text></View>
-          <View className='usersIcon' onClick={this.openTheDrawer.bind(this)}><AtAvatar circle image={this.state.avatarUrl}></AtAvatar></View>
+        <View className='userInfoContainer' onClick={this.openTheDrawer.bind(this)}>
+          <View className='usersName'><Text>Welcome! {this.state.nickName}</Text></View>
+          <View className='usersIcon'><AtAvatar size='large' circle image={this.state.avatarUrl}></AtAvatar></View>
         </View>
         <AtTabs
           current={this.state.current}
           scroll
           tabList={[
-            { title: '星期日' },
-            { title: '星期一' },
-            { title: '星期二' },
-            { title: '星期三' },
-            { title: '星期四' },
-            { title: '星期五' },
-            { title: '星期六' }
+            { title: 'Sun' },
+            { title: 'Mon' },
+            { title: 'Tue' },
+            { title: 'Wed' },
+            { title: 'Thu' },
+            { title: 'Fri' },
+            { title: 'Sat' }
           ]}
           onClick={this.handleClick.bind(this)}
         >

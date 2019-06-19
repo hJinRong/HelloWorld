@@ -19,7 +19,7 @@ export default class starter extends Component {
         )
         this.goToIndex=setTimeout(
             ()=>this.goToIndexPage(),
-            500
+            100
         )
         
     }
