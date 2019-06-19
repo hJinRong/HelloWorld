@@ -69,10 +69,10 @@ export default class Index extends Component {
     return (
       <View className='index'>
         <AtDrawer show={this.state.show} mask width='230px' right='true'>
-          <View className='drawer-item'><AtIcon size='30' color='#F00' value='bell'></AtIcon>做个备忘</View>
-          <View className='drawer-item'><AtIcon size='30' color='#F00' value='star-2'></AtIcon>Star for me</View>
-          <View className='drawer-item'><AtIcon size='30' color='#F00' value='help'></AtIcon>About us</View>
-          <View className='drawer-item'><AtIcon size='30' color='#F00' value='allow-left'></AtIcon>Exit</View>
+          <View className='drawer-item'><Text>备忘</Text><AtIcon size='30' color='#363636' value='bell'></AtIcon></View>
+          <View className='drawer-item'><Text>Star for me</Text><AtIcon size='30' color='#363636' value='star-2'></AtIcon></View>
+          <View className='drawer-item'><Text>About us</Text><AtIcon size='30' color='#363636' value='help'></AtIcon></View>
+          <View className='drawer-item'><Text>Exit</Text><AtIcon size='30' color='#363636' value='allow-left'></AtIcon></View>
         </AtDrawer>
         <View className='userInfoContainer'>
           <View className='usersName'><Text>Welcome! {this.state.nickName} </Text></View>
