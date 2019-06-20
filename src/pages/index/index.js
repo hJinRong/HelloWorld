@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { AtTabs, AtTabsPane, AtAvatar, AtDrawer, AtIcon } from 'taro-ui'
+import { AtTabs, AtAvatar, AtDrawer, AtIcon } from 'taro-ui'
+import { WeatherTabPane } from '../WeatherTabPanel/WeatherTabPanel'
 import './index.scss'
 
 export default class Index extends Component {
@@ -43,14 +44,6 @@ export default class Index extends Component {
     })
   }
 
-  componentDidMount() { }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
-
   handleClick(value) {
     this.setState({
       current: value
@@ -63,14 +56,14 @@ export default class Index extends Component {
     if (this.state.show != true) {
       this.setState({
         show: true
-      },() => {
+      }, () => {
         console.log(this.state.show)
       })
     }
   }
 
   closeTheDrawer() {
-    if(this.state.show == true) {
+    if (this.state.show == true) {
       this.setState({
         show: false
       })
@@ -78,9 +71,14 @@ export default class Index extends Component {
   }
 
   render() {
+    const numbers=[...Array(7).keys()]
+    const allTabPanel = numbers.map((num) => {
+      return (<WeatherTabPane current={num} index={num} key={num}></WeatherTabPane>)
+    })
+
     return (
       <View className='index'>
-        <AtDrawer show={this.state.show} mask width='230px' right='true' onClose={this.closeTheDrawer.bind(this)}>
+        <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)}>
           <View className='drawer-item'><Text>备忘</Text><AtIcon size='30' color='#363636' value='bell'></AtIcon></View>
           <View className='drawer-item'><Text>Star for me</Text><AtIcon size='30' color='#363636' value='star-2'></AtIcon></View>
           <View className='drawer-item'><Text>About us</Text><AtIcon size='30' color='#363636' value='help'></AtIcon></View>
@@ -104,27 +102,7 @@ export default class Index extends Component {
           ]}
           onClick={this.handleClick.bind(this)}
         >
-          <AtTabsPane current={this.state.current} index={0}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={1}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={2}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={3}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={4}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={5}>
-            <View ></View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={6}>
-            <View ></View>
-          </AtTabsPane>
+        {allTabPanel}
         </AtTabs>
       </View>
     )
