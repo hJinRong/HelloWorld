@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { AtTabs, AtAvatar, AtDrawer, AtIcon } from 'taro-ui'
-import { WeatherTabPane } from '../WeatherTabPanel/WeatherTabPanel'
+import { WeatherTabPanel } from '../WeatherTabPane/WeatherTabPanel'
 import './index.scss'
 
 export default class Index extends Component {
@@ -12,8 +12,7 @@ export default class Index extends Component {
       current: 0,
       nickName: '',
       avatarUrl: '',
-      province: '',
-      city: ''
+      weatherObject: {}
     }
   }
 
@@ -30,9 +29,7 @@ export default class Index extends Component {
               let userInfo = resu.userInfo
               this.setState({
                 nickName: userInfo.nickName,
-                avatarUrl: userInfo.avatarUrl,
-                province: userInfo.province,
-                city: userInfo.city
+                avatarUrl: userInfo.avatarUrl
               })
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(resu)
@@ -40,6 +37,18 @@ export default class Index extends Component {
             }
           })
         }
+      }
+    })
+
+    Taro.request({
+      url: 'https://route.showapi.com/909-3',  //这个api改一下。
+      header: {
+        'content-type': 'application/json'
+      },
+      success: res => {
+        this.setState({
+          weatherObject: res
+        })
       }
     })
   }
@@ -71,14 +80,14 @@ export default class Index extends Component {
   }
 
   render() {
-    const numbers=[...Array(7).keys()]
+    const numbers = [...Array(7).keys()]
     const allTabPanel = numbers.map((num) => {
-      return (<WeatherTabPane current={num} index={num} key={num}></WeatherTabPane>)
+      return (<WeatherTabPanel current={num} index={num} key={num} weatherObject={this.state.weatherObject}></WeatherTabPanel>)
     })
 
     return (
       <View className='index'>
-        <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)}>
+        <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)} right>
           <View className='drawer-item'><Text>备忘</Text><AtIcon size='30' color='#363636' value='bell'></AtIcon></View>
           <View className='drawer-item'><Text>Star for me</Text><AtIcon size='30' color='#363636' value='star-2'></AtIcon></View>
           <View className='drawer-item'><Text>About us</Text><AtIcon size='30' color='#363636' value='help'></AtIcon></View>
@@ -102,7 +111,7 @@ export default class Index extends Component {
           ]}
           onClick={this.handleClick.bind(this)}
         >
-        {allTabPanel}
+          {allTabPanel}
         </AtTabs>
       </View>
     )
