@@ -12,6 +12,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/mynote/mynote',
       'pages/index/index',
       'pages/starter/starter',
     ],

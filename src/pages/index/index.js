@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { AtTabs, AtAvatar, AtDrawer, AtIcon } from 'taro-ui'
+import { AtTabs, AtDrawer, AtIcon } from 'taro-ui'
 import { WeatherTabPanel } from '../WeatherTabPane/WeatherTabPanel'
 import './index.scss'
 
