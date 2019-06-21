@@ -86,8 +86,8 @@ export default class Index extends Component {
           <View className='drawer-item'><Text>Exit</Text><AtIcon size='30' color='#363636' value='allow-left'></AtIcon></View>
         </AtDrawer>
         <View className='userInfoContainer' onClick={this.openTheDrawer.bind(this)}>
-          <View className='usersName'><open-data type='userNickName'></open-data></View>
-          <View className='usersIcon'><open-data type='userAvatarUrl' className='theIcon'></open-data></View>
+          <View className='usersName'><View>Hello, <open-data type='userNickName'></open-data></View></View>
+          <View className='usersIcon'><open-data type='userAvatarUrl'></open-data></View>
         </View>
         <AtTabs
           current={this.state.current}

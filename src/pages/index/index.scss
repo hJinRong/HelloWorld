@@ -2,46 +2,46 @@
 @import "~taro-ui/dist/style/components/list.scss";
 
 .userInfoContainer {
-  height: 90px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-items: center;
   box-sizing: border-box;
-  margin-bottom: 50px;
-}
+  height: 140rpx;
+  padding-right: 1em;
 
-.usersName {
-  height: 80px;
-  padding-left: 2em;
-  flex-grow: 4;
-  box-sizing: border-box;
-  border: 1px red solid;
   display: flex;
   flex-direction: row;
-  justify-content: left;
-  align-content: center;
-}
-
-.usersIcon {
-  height: 80px;
-  flex-grow: 1;
-  box-sizing: border-box;
-  border: 1px green solid;
-  display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
 }
 
-.theIcon {
-  width: 70px;
-  height: 70px;
+.usersName {
+  box-sizing: border-box;
+  padding-left: 2em;
+  height: 140rpx;
+  font-size: 50rpx;
+  line-height: 50rpx;
+  color: rgb(71, 71, 71);
+
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
+
+.usersIcon {
+  box-sizing: border-box;
+  padding: 0;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  box-shadow: 0 0 1em #6e6d6d36;
+  overflow: hidden;
 }
 
 .drawer-item {
   box-sizing: border-box;
-  padding: 5px auto;
-  margin: 10px auto;
+  padding: 10rpx auto;
+  margin: 20rpx auto;
   border-bottom-style: solid 2px #36363636;
 }
