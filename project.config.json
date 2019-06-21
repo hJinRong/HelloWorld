@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "HelloWorld",
   "description": "nodes",
-  "appid": "touristappid",
+  "appid": "wx38db36cb02f864ae",
   "setting": {
     "urlCheck": true,
     "es6": false,

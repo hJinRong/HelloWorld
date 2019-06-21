@@ -12,7 +12,7 @@ export default class starter extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setTime=setInterval(
             ()=>this.tick(),
             1000
@@ -24,7 +24,7 @@ export default class starter extends Component {
         
     }
 
-    componentWillMount() {
+    componentWillUnmount() {
         clearInterval(this.setTime);
         clearTimeout(this.goToIndex);
     }

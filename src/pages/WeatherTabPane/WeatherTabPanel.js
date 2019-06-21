@@ -6,7 +6,7 @@ import './weatherTabPane.scss'
 export default function WeatherTabPanel(props) {
     return (
         <AtTabsPane current={props.current} index={props.index} key={props.key}>
-            <View><Text>{props.weatherObject}</Text></View>
+            <View><Text>{props.weatherObject.data.data[props.current].date}</Text></View>
         </AtTabsPane>
     );
 }
