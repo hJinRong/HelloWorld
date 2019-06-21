@@ -10,8 +10,6 @@ export default class Index extends Component {
     this.state = {
       show: false,
       current: 0,
-      nickName: '',
-      avatarUrl: '',
       weatherObject: {}
     }
   }
@@ -21,25 +19,6 @@ export default class Index extends Component {
   }
 
   componentWillMount() {
-    Taro.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          Taro.getUserInfo({
-            success: resu => {
-              let userInfo = resu.userInfo
-              this.setState({
-                nickName: userInfo.nickName,
-                avatarUrl: userInfo.avatarUrl
-              })
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(resu)
-              }
-            }
-          })
-        }
-      }
-    })
-
     Taro.request({
       url: 'https://route.showapi.com/909-3',  //这个api改一下。
       header: {
@@ -94,8 +73,8 @@ export default class Index extends Component {
           <View className='drawer-item'><Text>Exit</Text><AtIcon size='30' color='#363636' value='allow-left'></AtIcon></View>
         </AtDrawer>
         <View className='userInfoContainer' onClick={this.openTheDrawer.bind(this)}>
-          <View className='usersName'><Text>Welcome! {this.state.nickName}</Text></View>
-          <View className='usersIcon'><AtAvatar size='large' circle image={this.state.avatarUrl}></AtAvatar></View>
+          <View className='usersName'><open-data type='userNickName'></open-data></View>
+          <View className='usersIcon'><open-data type='userAvatarUrl'></open-data></View>
         </View>
         <AtTabs
           current={this.state.current}
