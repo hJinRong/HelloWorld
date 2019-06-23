@@ -12,34 +12,42 @@ import thundershower from './weatherIcon/thundershower.png'
 import fog from './weatherIcon/fog.png'
 
 export default function WeatherTabPanel(props) {
+    const { weaImg } = props
     return (
         <AtTabsPane current={props.current} index={props.index} key={props.key}>
             <View className='thisDay'>
-                <View className='weatherIcon'>
-                    <Image style='width: 100rpx;height: 100rpx;' src={cloudy}></Image>
+                <View className='iconAndTem'>
+                    <View className='weatherIcon'>
+                        {
+                            {
+                                'lei': <Image style='width: 100rpx;height: 100rpx;' src={rainy}></Image>,
+                                'yun': <Image style='width: 100rpx;height: 100rpx;' src={cloudy}></Image>,
+                                'xue': <Image style='width: 100rpx;height: 100rpx;' src={sunny}></Image>,
+                                'yin': <Image style='width: 100rpx;height: 100rpx' src={overcast}></Image>
+                            }[weaImg]
+                        }
+                        <Text>{props.weatherObject.data.data[props.current].wea}</Text>
+                        <Text>{props.weatherObject.data.data[props.current].tem1} / {props.weatherObject.data.data[props.current].tem2}°C</Text>
+                    </View>
                 </View>
-                <View className='twoTem'>
-                    <Text>{props.weatherObject.data.data[props.current].tem1} / {props.weatherObject.data.data[props.current].tem2}</Text>
-                </View>
-                <View>
-                    {props.weatherObject.data.data[props.current].hours.length === 24
-                        ? <View className='allHours'>
-                            {[...Array(24).keys()].map((num) => {
-                                // eslint-disable-next-line react/jsx-key
-                                return (<View className='hoursItem'>
-                                    <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}</Text>
-                                </View>)
-                            })}
-                        </View>
-                        : <View className='eightHours'>
-                            {[...Array(8).keys()].map((num) => {
-                                // eslint-disable-next-line react/jsx-key
-                                return (<View className='hoursItem'>
-                                    <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}</Text>
-                                </View>)
-                            })}
-                        </View>}
-                </View>
+
+                {props.weatherObject.data.data[props.current].hours.length === 24
+                    ? <View className='hoursContainer'>
+                        {[...Array(24).keys()].map((num) => {
+                            // eslint-disable-next-line react/jsx-key
+                            return (<View className='hoursItem'>
+                                <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}°C</Text>
+                            </View>)
+                        })}
+                    </View>
+                    : <View className='hoursContainer'>
+                        {[...Array(8).keys()].map((num) => {
+                            // eslint-disable-next-line react/jsx-key
+                            return (<View className='hoursItem'>
+                                <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}°C</Text>
+                            </View>)
+                        })}
+                    </View>}
             </View>
 
         </AtTabsPane>

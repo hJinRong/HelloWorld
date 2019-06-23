@@ -33,7 +33,7 @@ export default class Index extends Component {
         this.setState({
           weatherObject: res
         }, () => {
-          console.log(res, res.data.city)
+          console.log(res, res.data.data[0].wea_img)
         })
       }
     })
@@ -74,16 +74,16 @@ export default class Index extends Component {
   render() {
     const numbers = [...Array(7).keys()]
     const allTabPanel = numbers.map((num) => {
-      return (<WeatherTabPanel current={num} index={num} key={num} weatherObject={this.state.weatherObject}></WeatherTabPanel>)
+      return (<WeatherTabPanel current={num} index={num} key={num} weatherObject={this.state.weatherObject} weaImg={this.state.weatherObject.data.data[this.state.current].wea_img}></WeatherTabPanel>)
     })
 
     return (
       <View className='index'>
         <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)} right>
-          <View className='drawer-item' onClick={this.addANote.bind(this)}><Text>备忘</Text><AtIcon size='30' color='#363636' value='bell'></AtIcon></View>
-          <View className='drawer-item'><Text>Star for me</Text><AtIcon size='30' color='#363636' value='star-2'></AtIcon></View>
-          <View className='drawer-item'><Text>About us</Text><AtIcon size='30' color='#363636' value='help'></AtIcon></View>
-          <View className='drawer-item'><Text>Exit</Text><AtIcon size='30' color='#363636' value='allow-left'></AtIcon></View>
+          <View className='drawer-item' onClick={this.addANote.bind(this)}><AtIcon size='30' color='#363636' value='add-circle'></AtIcon><Text>备忘</Text></View>
+          <View className='drawer-item'><AtIcon size='30' color='#363636' value='star'></AtIcon><Text>Star for me</Text></View>
+          <View className='drawer-item'><AtIcon size='30' color='#363636' value='help'></AtIcon><Text>About us</Text></View>
+          <View className='drawer-item'><AtIcon size='30' color='#363636' value='arrow-left'></AtIcon><Text>Exit</Text></View>
         </AtDrawer>
         <View className='userInfoContainer' onClick={this.openTheDrawer.bind(this)}>
           <View className='usersName'><View>Hello, <open-data type='userNickName'></open-data></View></View>
