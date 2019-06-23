@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { AtTabs, AtDrawer, AtIcon, AtTabsPane } from 'taro-ui'
+import { AtTabs, AtDrawer, AtIcon } from 'taro-ui'
 import { WeatherTabPanel } from '../WeatherTabPane/WeatherTabPanel'
 import './index.scss'
 
@@ -32,8 +32,8 @@ export default class Index extends Component {
       success: res => {
         this.setState({
           weatherObject: res
-        },()=> {
-          console.log(res,res.data.city)
+        }, () => {
+          console.log(res, res.data.city)
         })
       }
     })
@@ -93,13 +93,13 @@ export default class Index extends Component {
           current={this.state.current}
           scroll
           tabList={[
-            { title: 'Sun' },
-            { title: 'Mon' },
-            { title: 'Tue' },
-            { title: 'Wed' },
-            { title: 'Thu' },
-            { title: 'Fri' },
-            { title: 'Sat' }
+            { title: (this.state.weatherObject.data.data[0].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[1].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[2].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[3].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[4].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[5].day.split('（'))[0] },
+            { title: (this.state.weatherObject.data.data[6].day.split('（'))[0] },
           ]}
           onClick={this.handleClick.bind(this)}
         >

@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtInput, AtTextarea, AtForm, AtButton, AtCalendar, AtMessage } from 'taro-ui'
+import { AtInput, AtTextarea, AtForm, AtButton, AtMessage } from 'taro-ui'
 import './mynote.scss'
 import { set as setGlobalData, get as getGlobalData } from '../global_data'
 
@@ -94,7 +94,6 @@ export default class MyNote extends Component {
             <View>
                 <AtMessage />
                 <AtForm onSubmit={this.onSubmit.bind(this)} onReset={this.onReset.bind(this)}>
-                    <AtCalendar />
                     <AtInput type='text' name='title' title='Title' value={this.state.titleValue} onChange={this.titleChange.bind(this)} />
                     <AtTextarea value={this.state.textAreaValue} onChange={this.textAreaValueChange.bind(this)} maxLength={200} placeholder='开始记录' />
                     <AtButton formType='submit' type='primary'>Submit</AtButton>
