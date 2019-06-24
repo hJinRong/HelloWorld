@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import { AtTabsPane } from 'taro-ui'
-import './weatherTabPane.scss'
+import './weatherTabPanel.scss'
 import cloudy from './weatherIcon/cloudy.png'
 import sunny from './weatherIcon/sunny.png'
 import overcast from './weatherIcon/overcast.png'
@@ -20,13 +20,16 @@ export default function WeatherTabPanel(props) {
                     <View className='weatherIcon'>
                         {
                             {
-                                'lei': <Image style='width: 100rpx;height: 100rpx;' src={rainy}></Image>,
+                                'lei': <Image style='width: 100rpx;height: 100rpx;' src={thundershower}></Image>,
+                                'yu' : <Image style='width: 100rpx;height: 100rpx;' src={rainy}></Image>,
                                 'yun': <Image style='width: 100rpx;height: 100rpx;' src={cloudy}></Image>,
                                 'xue': <Image style='width: 100rpx;height: 100rpx;' src={sunny}></Image>,
                                 'yin': <Image style='width: 100rpx;height: 100rpx' src={overcast}></Image>
                             }[weaImg]
                         }
-                        <Text>{props.weatherObject.data.data[props.current].wea}</Text>
+                        <Text style='padding-left:1em; font-sizing: 40rpx;'>{props.weatherObject.data.data[props.current].wea}</Text>
+                    </View>
+                    <View className='weatherTem'>
                         <Text>{props.weatherObject.data.data[props.current].tem1} / {props.weatherObject.data.data[props.current].tem2}°C</Text>
                     </View>
                 </View>
