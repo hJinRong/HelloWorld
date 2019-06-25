@@ -14,7 +14,7 @@ import fog from './weatherIcon/fog.png'
 export default function WeatherTabPanel(props) {
     const { weaImg } = props
     return (
-        <AtTabsPane current={props.current} index={props.index} key={props.key}>
+        <AtTabsPane current={props.current} index={props.index}>
             <View className='thisDay'>
                 <View className='iconAndTem'>
                     <View className='weatherIcon'>

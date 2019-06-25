@@ -18,7 +18,7 @@ export default class MyNote extends Component {
         for (let i = 0; i < 5; i++) {
             let emptyVal = 'empty_' + i.toString()
             let emptyOrNot = Taro.getStorageSync(emptyVal)
-            if (emptyOrNot === -1) {
+            if (emptyOrNot !== '1') {
                 Taro.setStorage({
                     key: 'title_' + i.toString(),
                     data: ''
@@ -30,6 +30,10 @@ export default class MyNote extends Component {
                 Taro.setStorage({
                     key: 'deadline_' + i.toString(),
                     data: ''
+                })
+                Taro.setStorage({
+                    key: 'empty_' + i.toString(),
+                    data: '-1'
                 })
             }
         }
@@ -43,24 +47,23 @@ export default class MyNote extends Component {
     }
 
     onSubmit() {
-        /*这里开始要判断是否有空key*/
-        let num = function () {
-            let i;
-            for (i = 0; i < 5; i++) {
-                let empty = 'empty_' + i.toString();
+        let num = 0
+        for (let j = 0; j < 5; j++) {
+            let empty = 'empty_' + j.toString();
+            try {
                 let emptyVal = Taro.getStorageSync(empty)
                 if (emptyVal === '-1') {
+                    num = j
                     break;
                 } else {
-                    if (i === 4) {
+                    if (j === 4) {
                         Taro.atMessage({
                             'message': '你所可以存储的备忘已达上限',
                             'type': 'error'
                         })
                     }
                 }
-            }
-            return i;
+            } catch (e) { }
         }
 
         let t = this.state.titleValue
@@ -84,7 +87,7 @@ export default class MyNote extends Component {
                                         data: '1',
                                         success: () => {
                                             Taro.atMessage({
-                                                'message': '保存成功',
+                                                'message': '保存成功 ' + num.toString(),
                                                 'type': 'success'
                                             })
                                         }
@@ -149,7 +152,8 @@ export default class MyNote extends Component {
     saveAndExit() {
         let t = setGlobalData('title', this.state.titleValue)
         let c = setGlobalData('content', this.state.textAreaValue)
-        if (t === 1 && c === 1) {
+        let d = setGlobalData('deadline', this.state.deadline)
+        if (t === 1 && c === 1 && d === 1) {
             console.log('Submit success!')
             Taro.atMessage({
                 'message': '暂存成功，即将退出',
@@ -173,6 +177,12 @@ export default class MyNote extends Component {
         })
     }
 
+    goToTaskList() {
+        Taro.navigateTo({
+            url: '/pages/tasklist/tasklist'
+        })
+    }
+
 
     render() {
         return (
@@ -191,6 +201,7 @@ export default class MyNote extends Component {
                     <AtButton size='small' onClick={this.saveAndExit.bind(this)}>暂存并退出</AtButton>
                     <AtButton size='small' onClick={this.exitButDoNotSave.bind(this)}>直接退出</AtButton>
                 </View>
+                <AtButton size='secondary' onClick={this.goToTaskList.bind(this)}>Go to my task list</AtButton>
             </View>
         )
     }

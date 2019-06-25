@@ -15,6 +15,7 @@ class App extends Component {
       'pages/starter/starter',
       'pages/index/index',
       'pages/mynote/mynote',
+      'pages/tasklist/tasklist'
     ],
     window: {
       backgroundTextStyle: 'light',

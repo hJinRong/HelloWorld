@@ -29,12 +29,13 @@ export default class Index extends Component {
       header: {
         'content-type': 'application/json'
       },
-      success: res => {
+      success: (res) => {
         this.setState({
           weatherObject: res
-        }, () => {
-          console.log(res, res.data.data[0].wea_img)
         })
+      },
+      fail: () => {
+        console.log('fail to request...')
       }
     })
   }
