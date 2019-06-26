@@ -2,14 +2,14 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import './tasklist.scss'
 import TaskCard from './taskcard';
-import { set as setGlobalData, get as getGlobalData } from '../global_data'
+
 
 export default class Tasklist extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            keysObject: {},
+            keysObject: [],
         }
     }
 
@@ -24,13 +24,42 @@ export default class Tasklist extends Component {
     }
 
     render() {
+        const titleArray = []
+        const contentArray = []
+        const deadlineArray = []
+        const theCopyOfKeysArray = this.state.keysObject
+        const arrFilter = [...Array(theCopyOfKeysArray.length).keys()].map((num) => {
+            if (theCopyOfKeysArray[num].search(/title_/) !== -1) {
+                Taro.getStorage({
+                    key: theCopyOfKeysArray[num],
+                    success: (res) => {
+                        titleArray.push(res)
+                    }
+                })
+            } else if (theCopyOfKeysArray[num].search(/content_/) !== -1) {
+                Taro.getStorage({
+                    key: theCopyOfKeysArray[num],
+                    success: (res) => {
+                        contentArray.push(res)
+                    }
+                })
+            } else if (theCopyOfKeysArray[num].search(/deadline_/) !== -1) {
+                Taro.getStorage({
+                    key: theCopyOfKeysArray[num],
+                    success: (res) => {
+                        deadlineArray.push(res)
+                    }
+                })
+            }
+        })
+
+        const taskCardList = [...Array(titleArray.length).keys()].map((num) => {
+            return (<TaskCard title={titleArray[num]} content={contentArray[num]} deadline={deadlineArray[num]} key={num} />)
+        })
+
         return (
             <View>
-                <TaskCard title={this.state.keysObject.title_1} content={this.state.keysObject.content_1} deadline={this.state.keysObject.deadline_1}></TaskCard>
-                <TaskCard title={this.state.keysObject.title_2} content={this.state.keysObject.content_2} deadline={this.state.keysObject.deadline_2}></TaskCard>
-                <TaskCard title={this.state.keysObject.title_3} content={this.state.keysObject.content_3} deadline={this.state.keysObject.deadline_3}></TaskCard>
-                <TaskCard title={this.state.keysObject.title_4} content={this.state.keysObject.content_4} deadline={this.state.keysObject.deadline_4}></TaskCard>
-                <TaskCard title={this.state.keysObject.title_5} content={this.state.keysObject.content_5} deadline={this.state.keysObject.deadline_5}></TaskCard>
+                {taskCardList}
             </View>
         )
     }
