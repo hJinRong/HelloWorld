@@ -38,7 +38,7 @@ export default function WeatherTabPanel(props) {
                     ? <View className='hoursContainer'>
                         {[...Array(24).keys()].map((num) => {
                             // eslint-disable-next-line react/jsx-key
-                            return (<View className='hoursItem'>
+                            return (<View className='hoursItem' key={num}>
                                 <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}°C</Text>
                             </View>)
                         })}
@@ -46,7 +46,7 @@ export default function WeatherTabPanel(props) {
                     : <View className='hoursContainer'>
                         {[...Array(8).keys()].map((num) => {
                             // eslint-disable-next-line react/jsx-key
-                            return (<View className='hoursItem'>
+                            return (<View className='hoursItem' key={num}>
                                 <Text>{props.weatherObject.data.data[props.current].hours[num].hours} -- {props.weatherObject.data.data[props.current].hours[num].tem}°C</Text>
                             </View>)
                         })}

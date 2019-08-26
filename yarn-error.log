@@ -1,8 +1,8 @@
 Arguments: 
-  D:\nodejs\node.exe D:\Yarn\bin\yarn.js add dayjs --silent --no-progress
+  D:\nodejs\node.exe D:\Yarn\bin\yarn.js add taro-ui/dist/style/index.scss --silent --no-progress
 
 PATH: 
-  D:\Python37-32\Scripts\;D:\Python37-32\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Git\cmd;D:\Java\jdk1.8.0_162\bin;D:\gradle\bin;D:\Sdk\platform-tools;D:\spring-boot-cli\bin;D:\Maven\bin;D:\Sdk\tools;D:\nodejs\;D:\Yarn\bin\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;D:\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Yarn\bin
+  D:\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;E:\myApp\HelloWorld\node_modules\.bin;C:\Users\ADMINI~1\AppData\Local\Temp\yarn--1566813843324-0.7560519526622362;E:\myApp\HelloWorld\node_modules\.bin;C:\Users\Administrator\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\libexec\lib\node_modules\npm\bin\node-gyp-bin;D:\lib\node_modules\npm\bin\node-gyp-bin;D:\nodejs\node_modules\npm\bin\node-gyp-bin;D:\Python37-32\Scripts\;D:\Python37-32\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Git\cmd;D:\Java\jdk1.8.0_162\bin;D:\gradle\bin;D:\Sdk\platform-tools;D:\spring-boot-cli\bin;D:\Maven\bin;D:\Sdk\tools;D:\nodejs\;D:\Yarn\bin\;D:\flutter\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;D:\MongoDB\Server\4.0\bin;D:\Python37\Scripts\;D:\Python37\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;D:\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.16.0
@@ -14,7 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'E:\myApp\HelloWorld\node_modules\_node-sass@4.12.0@node-sass\vendor\win32-x64-64\binding.node'
+  Error: https://registry.npm.taobao.org/taro-ui%2fdist/style/index.scss: [not_found] document not found
+      at Request.params.callback [as _callback] (D:\Yarn\lib\cli.js:65200:18)
+      at Request.self.callback (D:\Yarn\lib\cli.js:129590:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (D:\Yarn\lib\cli.js:130562:10)
+      at Request.emit (events.js:198:13)
+      at Gunzip.<anonymous> (D:\Yarn\lib\cli.js:130484:12)
+      at Object.onceWrapper (events.js:286:20)
+      at Gunzip.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
@@ -51,15 +61,15 @@ npm manifest:
       "@tarojs/taro-h5": "1.3.2",
       "@tarojs/taro-swan": "1.3.2",
       "@tarojs/taro-tt": "1.3.2",
-      "@tarojs/taro-weapp": "1.3.2",
-      "nervjs": "^1.4.0",
-      "nerv-devtools": "^1.4.0"
+      "@tarojs/taro-weapp": "^1.3.2",
+      "nerv-devtools": "^1.4.0",
+      "nervjs": "^1.4.0"
     },
     "devDependencies": {
-      "@tarojs/plugin-babel": "1.3.2",
+      "@tarojs/plugin-babel": "^1.3.2",
       "@tarojs/plugin-csso": "1.3.2",
       "@tarojs/plugin-sass": "1.3.2",
-      "@tarojs/plugin-uglifyjs": "1.3.2",
+      "@tarojs/plugin-uglifyjs": "^1.3.2",
       "@tarojs/webpack-runner": "1.3.2",
       "@types/react": "^16.8.22",
       "@types/webpack-env": "^1.13.6",
@@ -214,7 +224,7 @@ Lockfile:
       swiper "^4.4.2"
       weui "^1.1.2"
   
-  "@tarojs/plugin-babel@1.3.2":
+  "@tarojs/plugin-babel@^1.3.2":
     version "1.3.2"
     resolved "https://registry.npm.taobao.org/@tarojs/plugin-babel/download/@tarojs/plugin-babel-1.3.2.tgz#fe8929420759fc4d314b9661964ecbe0b05c7194"
     integrity sha1-/okpQgdZ/E0xS5Zhlk7L4LBccZQ=
@@ -236,7 +246,7 @@ Lockfile:
       node-sass "^4.12.0"
       scss-bundle "^2.5.1"
   
-  "@tarojs/plugin-uglifyjs@1.3.2":
+  "@tarojs/plugin-uglifyjs@^1.3.2":
     version "1.3.2"
     resolved "https://registry.npm.taobao.org/@tarojs/plugin-uglifyjs/download/@tarojs/plugin-uglifyjs-1.3.2.tgz#6a90a0be431f1710961388a4bd7b3a6d6fd1a022"
     integrity sha1-apCgvkMfFxCWE4ikvXs6bW/RoCI=
@@ -296,7 +306,7 @@ Lockfile:
       lodash "^4.17.10"
       prop-types "^15.6.1"
   
-  "@tarojs/taro-weapp@1.3.2":
+  "@tarojs/taro-weapp@^1.3.2":
     version "1.3.2"
     resolved "https://registry.npm.taobao.org/@tarojs/taro-weapp/download/@tarojs/taro-weapp-1.3.2.tgz#b9d0db612222ee8c391e8d392e000eb069b60104"
     integrity sha1-udDbYSIi7ow5Ho05LgAOsGm2AQQ=
@@ -394,10 +404,10 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
     integrity sha1-8aEee6uww8rWgQC+OB0eBkxo8fY=
   
-  "@types/react@^16.4.6":
-    version "16.8.20"
-    resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.20.tgz#4f633ecbd0a4d56d0ccc50fff6f9321bbcd7d583"
-    integrity sha1-T2M+y9Ck1W0MzFD/9vkyG7zX1YM=
+  "@types/react@^16.8.22":
+    version "16.8.22"
+    resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.8.22.tgz#7f18bf5ea0c1cad73c46b6b1c804a3ce0eec6d54"
+    integrity sha1-fxi/XqDBytc8RraxyASjzg7sbVQ=
     dependencies:
       "@types/prop-types" "*"
       csstype "^2.2.0"
@@ -5567,7 +5577,7 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/nerv-utils/download/nerv-utils-1.4.1.tgz?cache=0&sync_timestamp=1560741143035&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnerv-utils%2Fdownload%2Fnerv-utils-1.4.1.tgz#2098756d2dcf45d719cced815a919dfad60c5c02"
     integrity sha1-IJh1bS3PRdcZzO2BWpGd+tYMXAI=
   
-  nervjs@1.4.1, nervjs@^1.4.0:
+  nervjs@^1.4.0:
     version "1.4.1"
     resolved "https://registry.npm.taobao.org/nervjs/download/nervjs-1.4.1.tgz?cache=0&sync_timestamp=1560741147995&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnervjs%2Fdownload%2Fnervjs-1.4.1.tgz#c5125eec0bd67d022d11f1f0cf295852ae0c6cb3"
     integrity sha1-xRJe7AvWfQItEfHwzylYUq4MbLM=

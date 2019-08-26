@@ -78,6 +78,11 @@ export default class Index extends Component {
       return (<WeatherTabPanel current={num} index={num} key={num} weatherObject={this.state.weatherObject} weaImg={this.state.weatherObject.data.data[this.state.current].wea_img}></WeatherTabPanel>)
     })
 
+    let tabListItems = []
+    for (let index = 0; index < this.state.weatherObject.data.data.length; index++) {
+      tabListItems.push({title:this.state.weatherObject.data.data[index].day.split('（')[0]})
+    }
+
     return (
       <View className='index'>
         <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)} right>
@@ -93,15 +98,7 @@ export default class Index extends Component {
         <AtTabs
           current={this.state.current}
           scroll
-          tabList={[
-            { title: (this.state.weatherObject.data.data[0].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[1].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[2].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[3].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[4].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[5].day.split('（'))[0] },
-            { title: (this.state.weatherObject.data.data[6].day.split('（'))[0] },
-          ]}
+          tabList={tabListItems}
           onClick={this.handleClick.bind(this)}
         >
           {allTabPanel}

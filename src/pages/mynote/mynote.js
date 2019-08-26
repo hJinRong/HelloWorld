@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Picker } from '@tarojs/components'
+import { View, Picker, Text } from '@tarojs/components'
 import { AtInput, AtTextarea, AtForm, AtButton, AtMessage } from 'taro-ui'
 import './mynote.scss'
 import { set as setGlobalData, get as getGlobalData } from '../global_data'
@@ -10,7 +10,7 @@ export default class MyNote extends Component {
         this.state = {
             titleValue: '',
             textAreaValue: '',
-            deadline: ''
+            deadline: '2019-09-01'
         }
     }
 
@@ -191,7 +191,7 @@ export default class MyNote extends Component {
                 <AtForm onSubmit={this.onSubmit.bind(this)} onReset={this.onReset.bind(this)}>
                     <AtInput type='text' name='title' title='Title' value={this.state.titleValue} onChange={this.titleChange.bind(this)} />
                     <AtTextarea value={this.state.textAreaValue} onChange={this.textAreaValueChange.bind(this)} maxLength={200} placeholder='开始记录' />
-                    <Picker mode='date' onChange={this.onDateChange.bind(this)}></Picker>
+                    <Picker mode='date' onChange={this.onDateChange.bind(this)} value={this.state.deadline}><Text>{this.state.deadline}</Text></Picker>
                     <AtButton formType='submit' type='primary'>Submit</AtButton>
                     <View className='resetBtn'>
                         <AtButton formType='reset' type='secondary'>Reset</AtButton>

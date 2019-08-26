@@ -12,10 +12,10 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/starter/starter',
       'pages/index/index',
-      'pages/mynote/mynote',
-      'pages/tasklist/tasklist'
+      'pages/starter/starter',
+      'pages/tasklist/tasklist',
+      'pages/mynote/mynote'
     ],
     window: {
       backgroundTextStyle: 'light',
