@@ -1,13 +1,13 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { MoreDetails } from './moredetails'
 import './taskcard.scss'
 
 export default class TaskCard extends Component {
     constructor(props) {
         super(props)
-        this.state={
-            visible:false
+        this.state = {
+            visible: true
         }
     }
 
@@ -20,10 +20,9 @@ export default class TaskCard extends Component {
     render() {
         return (
             <View>
-            <View className='taskCard' onClick={this.seeDetails.bind(this)}>
-                {this.props.title}  {this.props.content} {this.props.deadline}
-            </View>
-            {this.state.visible && <MoreDetails title={this.props.title} content={this.props.content} deadline={this.prop.deadline} />}
+                <View className='taskCard' onClick={this.seeDetails.bind(this)}>
+                    <Text>{Taro.getStorageSync(this.props.keysSrc[this.props.keyNum]).title} {Taro.getStorageSync(this.props.keysSrc[this.props.keyNum]).activity} {Taro.getStorageSync(this.props.keysSrc[this.props.keyNum]).deadline}</Text>
+                </View>
             </View>
         )
     }

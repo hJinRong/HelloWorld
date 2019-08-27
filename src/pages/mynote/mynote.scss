@@ -5,6 +5,19 @@
     justify-content: space-around;
 }
 
+.timePicker {
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+    height: 60rpx;
+    text-align: center;
+    border-bottom: 2rpx solid rgb(100, 224, 255)
+}
+
+.submitBtn {
+    width: 100%;
+    margin: 30rpx 0;
+}
+
 .resetBtn {
     width: 100%;
     margin: 60rpx 0;

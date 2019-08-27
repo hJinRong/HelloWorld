@@ -88,7 +88,6 @@ export default class Index extends Component {
         <AtDrawer show={this.state.show} mask onClose={this.closeTheDrawer.bind(this)} right>
           <View className='drawer-item' onClick={this.addANote.bind(this)}><AtIcon size='30' color='#363636' value='add-circle'></AtIcon><Text>备忘</Text></View>
           <View className='drawer-item'><AtIcon size='30' color='#363636' value='star'></AtIcon><Text>Star for me</Text></View>
-          <View className='drawer-item'><AtIcon size='30' color='#363636' value='help'></AtIcon><Text>About us</Text></View>
           <View className='drawer-item'><AtIcon size='30' color='#363636' value='arrow-left'></AtIcon><Text>Exit</Text></View>
         </AtDrawer>
         <View className='userInfoContainer' onClick={this.openTheDrawer.bind(this)}>

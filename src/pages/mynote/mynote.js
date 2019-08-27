@@ -14,119 +14,22 @@ export default class MyNote extends Component {
         }
     }
 
-    componentWillMount() {
-        for (let i = 0; i < 5; i++) {
-            let emptyVal = 'empty_' + i.toString()
-            let emptyOrNot = Taro.getStorageSync(emptyVal)
-            if (emptyOrNot !== '1') {
-                Taro.setStorage({
-                    key: 'title_' + i.toString(),
-                    data: ''
-                })
-                Taro.setStorage({
-                    key: 'content_' + i.toString(),
-                    data: ''
-                })
-                Taro.setStorage({
-                    key: 'deadline_' + i.toString(),
-                    data: ''
-                })
-                Taro.setStorage({
-                    key: 'empty_' + i.toString(),
-                    data: '-1'
-                })
-            }
-        }
-
-        let t = getGlobalData('title')
-        let c = getGlobalData('content')
-        this.setState({
-            titleValue: t,
-            textAreaValue: c
-        })
-    }
-
     onSubmit() {
-        let num = 0
-        for (let j = 0; j < 5; j++) {
-            let empty = 'empty_' + j.toString();
-            try {
-                let emptyVal = Taro.getStorageSync(empty)
-                if (emptyVal === '-1') {
-                    num = j
-                    break;
-                } else {
-                    if (j === 4) {
-                        Taro.atMessage({
-                            'message': '你所可以存储的备忘已达上限',
-                            'type': 'error'
-                        })
-                    }
-                }
-            } catch (e) { }
-        }
-
-        let t = this.state.titleValue
-        let c = this.state.textAreaValue
-        let d = this.state.deadline
-        if (t !== '' && c !== '') {
-            Taro.setStorage({
-                key: 'title_' + num.toString(),
-                data: t,
-                success: () => {
-                    Taro.setStorage({
-                        key: 'content_' + num.toString(),
-                        data: c,
-                        success: () => {
-                            Taro.setStorage({
-                                key: 'deadline_' + num.toString(),
-                                data: d,
-                                success: () => {
-                                    Taro.setStorage({
-                                        key: 'empty_' + num.toString(),
-                                        data: '1',
-                                        success: () => {
-                                            Taro.atMessage({
-                                                'message': '保存成功 ' + num.toString(),
-                                                'type': 'success'
-                                            })
-                                        }
-                                    })
-                                },
-                                fail: () => {
-                                    Taro.setStorage({
-                                        key: 'title_' + num.toString(),
-                                        data: ''
-                                    })
-                                    Taro.setStorage({
-                                        key: 'content_' + num.toString(),
-                                        data: ''
-                                    })
-                                    Taro.setStorage({
-                                        key: 'deadline_' + num.toString(),
-                                        data: ''
-                                    })
-                                    Taro.setStorage({
-                                        key: 'empty_' + num.toString(),
-                                        data: '-1'
-                                    })
-                                    Taro.atMessage({
-                                        'message': '保存失败',
-                                        'type': 'error'
-                                    })
-                                }
-                            })
-                        },
-                    })
-                }
-            })
-        }
+        Taro.setStorage({
+            key: new Date().toUTCString(),
+            data: {
+                title: this.state.titleValue,
+                activity: this.state.textAreaValue,
+                deadline: this.state.deadline
+            }
+        })
     }
 
     onReset() {
         this.setState({
             titleValue: '',
-            textAreaValue: ''
+            textAreaValue: '',
+            deadline:'2019-09-01'
         })
     }
 
@@ -190,9 +93,12 @@ export default class MyNote extends Component {
                 <AtMessage />
                 <AtForm onSubmit={this.onSubmit.bind(this)} onReset={this.onReset.bind(this)}>
                     <AtInput type='text' name='title' title='Title' value={this.state.titleValue} onChange={this.titleChange.bind(this)} />
-                    <AtTextarea value={this.state.textAreaValue} onChange={this.textAreaValueChange.bind(this)} maxLength={200} placeholder='开始记录' />
-                    <Picker mode='date' onChange={this.onDateChange.bind(this)} value={this.state.deadline}><Text>{this.state.deadline}</Text></Picker>
-                    <AtButton formType='submit' type='primary'>Submit</AtButton>
+                    <AtTextarea value={this.state.textAreaValue} onChange={this.textAreaValueChange.bind(this)} maxLength={300} placeholder='开始记录' />
+                    <Picker className='timePicker' mode='date' onChange={this.onDateChange.bind(this)} value={this.state.deadline}><Text>deadline: {this.state.deadline}</Text></Picker>
+                    
+                    <View className='submitBtn'>
+                        <AtButton formType='submit' type='primary'>Submit</AtButton>
+                    </View>
                     <View className='resetBtn'>
                         <AtButton formType='reset' type='secondary'>Reset</AtButton>
                     </View>
