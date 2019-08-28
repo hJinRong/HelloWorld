@@ -1,0 +1,49 @@
+@import "~taro-ui/dist/style/components/icon.scss";
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.hts {
+    justify-content: space-between;
+    align-content: flex-end;
+    flex-direction: row;
+    display: flex;
+}
+
+.caiyunImage {
+    width: 128rpx;
+    height: 128rpx;
+}
+
+.temperature {
+    font-size: 220rpx;
+}
+
+.humidity {
+    font-size: 64rpx;
+}
+
+.driveTakeCare>.dtc{
+    border-right: black solid 1px;
+}
+
+.outdoor {
+    text-align: center;
+}
+
+.newTodo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.newTodoBtn {
+    border-radius: 50%;
+    border: solid 1px black;
+    padding: 20rpx;
+}
