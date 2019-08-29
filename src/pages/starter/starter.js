@@ -41,7 +41,7 @@ export default class starter extends Component {
 
     goToIndexPage() {
         Taro.navigateTo({
-            url: '/pages/index/index'
+            url: '/pages/index/index_caiyun'
         })
 
     }
@@ -49,7 +49,7 @@ export default class starter extends Component {
     jumpToIndex() {
         if (this.state.jump === true) {
             Taro.navigateTo({
-                url: '/pages/index/index'
+                url: '/pages/index/index_caiyun'
             })
         }
     }

@@ -1,49 +1,73 @@
 @import "~taro-ui/dist/style/components/icon.scss";
 
 .flexContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .hts {
-    justify-content: space-between;
-    align-content: flex-end;
-    flex-direction: row;
-    display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: row;
+  display: flex;
+  margin-bottom: 50rpx;
 }
 
 .caiyunImage {
-    width: 128rpx;
-    height: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.temContainer {
+  display: inline-flex;
+  flex-direction: row;
+  align-self: center;
 }
 
 .temperature {
-    font-size: 220rpx;
+  font-size: 220rpx;
 }
 
 .humidity {
-    font-size: 64rpx;
+  font-size: 64rpx;
 }
 
-.driveTakeCare>.dtc{
-    border-right: black solid 1px;
+.driveTakeCare {
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-around;
 }
 
 .outdoor {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 20rpx;
 }
 
-.newTodo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
+.newTodo,
+.navigateToTasklist {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
 }
 
 .newTodoBtn {
-    border-radius: 50%;
-    border: solid 1px black;
-    padding: 20rpx;
+  border-radius: 14rpx;
+  background-color: rgb(0, 162, 255);
+  color: white;
+  padding: 20rpx;
+  margin-top: 60rpx;
 }
+
+.navigateToTasklistBtn {
+  background-color: none;
+  color: black;
+  border: black 1px solid;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  margin-top: 60rpx;
+  background-color: white;
+}
+ 

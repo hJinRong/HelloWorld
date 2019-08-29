@@ -12,30 +12,36 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index',
       'pages/starter/starter',
+      'pages/index/index_caiyun',
+      'pages/mynote/mynote',
       'pages/tasklist/tasklist',
-      'pages/mynote/mynote'
+      'pages/index/index',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    permission: {
+      "scope.userLocation": {
+        desc: "你的位置信息将用于小程序位置接口的效果展示"
+      }
     }
   }
 
-  componentDidMount () {}
+  componentDidMount() { }
 
-  componentDidShow () {}
+  componentDidShow() { }
 
-  componentDidHide () {}
+  componentDidHide() { }
 
-  componentDidCatchError () {}
+  componentDidCatchError() { }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Index />
     )

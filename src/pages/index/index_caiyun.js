@@ -23,8 +23,6 @@ export default function CaiyunIndex() {
                 const _latitude = res.latitude
                 const _longitude = res.longitude
                 usersLocation = _longitude.toString() + ',' + _latitude.toString()  //经度在先，纬度在后
-                console.log('success to get the location.')
-
                 let hourlyUrl = 'https://api.caiyunapp.com/v2/TAkhjf8d1nlSlspN/' + usersLocation + '/hourly.json'  //小时级预报
                 let realtimeUrl = 'https://api.caiyunapp.com/v2/TAkhjf8d1nlSlspN/' + usersLocation + '/realtime.json'  //实时预报
 
@@ -44,9 +42,21 @@ export default function CaiyunIndex() {
                 console.log('failed...')
             }
         })
-        
+
         return getGlobalData('realtimeData')['result']
     })
+
+    const newTodo = () => {
+        Taro.navigateTo({
+            url: '/pages/mynote/mynote'
+        })
+    }
+
+    const navigateToTasklist = () => {
+        Taro.navigateTo({
+            url: '/pages/tasklist/tasklist'
+        })
+    }
 
     return (
         <View className='flexContainer'>
@@ -71,22 +81,31 @@ export default function CaiyunIndex() {
                             <Image className='caiyunImage' src={PARTLY_CLOUDY_NIGHT}></Image>,
                     }[realtime_object.skycon]
                 }
+                <View className='temContainer'>
+                    <Text className='temperature'>{Math.round(realtime_object.temperature)}</Text>
+                    <Image src={TC} style='width: 40rpx;height: 40rpx;align-self: flex-start;'></Image>
+                </View>
 
-                <Text className='temperature'>{Math.round(realtime_object.temperature)}</Text>
-                <Image src={TC} style='width: 40rpx;height: 40rpx;'></Image>
                 <Text className='humidity'>{realtime_object.humidity}</Text>
             </View>
 
             <View className='driveTakeCare'>
-                <Text className='dtc'>可见度：{realtime_object.visibility}</Text>
-                <Text className='dtc'>风向：{realtime_object.wind.direction}deg 风速：{realtime_object.wind.speed}km/h</Text>
+                <Text className='dtc'>可见度:{realtime_object.visibility}</Text>
+                <Text className='dtc'>风向:{realtime_object.wind.direction}deg</Text>
+                <Text className='dtc'>风速:{realtime_object.wind.speed}km/h</Text>
             </View>
+
             <View className='outdoor'>
                 <Text>紫外线系数:{realtime_object.ultraviolet.index}（{realtime_object.ultraviolet.desc}）</Text>
             </View>
             <View className='newTodo'>
-                <View className='newTodoBtn'>
-                    <AtIcon size='30' color='#363636' value='add-circle'></AtIcon><Text>New Todo</Text>
+                <View className='newTodoBtn' onClick={newTodo}>
+                    <AtIcon size='30' color='white' value='add-circle'></AtIcon><Text>New Todo</Text>
+                </View>
+            </View>
+            <View className='navigateToTasklist' onClick={navigateToTasklist}>
+                <View className='navigateToTasklistBtn'>
+                    <AtIcon size='30' color='black' value='list'></AtIcon><Text>My Todo</Text>
                 </View>
             </View>
         </View>

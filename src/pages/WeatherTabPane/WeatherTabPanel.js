@@ -24,7 +24,7 @@ export default function WeatherTabPanel(props) {
                                 'yu' : <Image style='width: 100rpx;height: 100rpx;' src={rainy}></Image>,
                                 'yun': <Image style='width: 100rpx;height: 100rpx;' src={cloudy}></Image>,
                                 'xue': <Image style='width: 100rpx;height: 100rpx;' src={sunny}></Image>,
-                                'yin': <Image style='width: 100rpx;height: 100rpx' src={overcast}></Image>
+                                'yin': <Image style='width: 100rpx;height: 100rpx;' src={overcast}></Image>
                             }[weaImg]
                         }
                         <Text style='padding-left:1em; font-sizing: 40rpx;'>{props.weatherObject.data.data[props.current].wea}</Text>

@@ -23,6 +23,15 @@ export default class MyNote extends Component {
                 deadline: this.state.deadline
             }
         })
+
+        Taro.atMessage({
+            'message':'保存成功',
+            'type':'success'
+        })
+
+        Taro.navigateTo({
+            url:'/pages/index/index_caiyun'
+        })
     }
 
     onReset() {
@@ -63,7 +72,7 @@ export default class MyNote extends Component {
                 'type': 'success'
             })
             Taro.navigateTo({
-                url: '/pages/index/index'
+                url: '/pages/index/index_caiyun'
             })
         } else {
             console.log('Failed...')
@@ -76,7 +85,7 @@ export default class MyNote extends Component {
 
     exitButDoNotSave() {
         Taro.navigateTo({
-            url: '/pages/index/index'
+            url: '/pages/index/index_caiyun'
         })
     }
 
@@ -107,7 +116,7 @@ export default class MyNote extends Component {
                     <AtButton size='small' onClick={this.saveAndExit.bind(this)}>暂存并退出</AtButton>
                     <AtButton size='small' onClick={this.exitButDoNotSave.bind(this)}>直接退出</AtButton>
                 </View>
-                <AtButton size='secondary' onClick={this.goToTaskList.bind(this)}>Go to my task list</AtButton>
+                <AtButton size='normal' type='secondary' onClick={this.goToTaskList.bind(this)}>Go to my task list</AtButton>
             </View>
         )
     }
